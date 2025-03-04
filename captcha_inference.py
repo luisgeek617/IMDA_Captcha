@@ -8,12 +8,12 @@ Original file is located at
 """
 
 # Commented out IPython magic to ensure Python compatibility.
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 
 # %cd /content/drive/MyDrive/IMDA_Interview_Test/sampleCaptchas/
 
-!pip install --upgrade jax jaxlib
+#!pip install --upgrade jax jaxlib
 
 import cv2
 import numpy as np

@@ -1,3 +1,5 @@
+#python captcha_inference_v2.py Model/model.json Model/model.h5 input/input01.jpg
+
 import argparse
 import cv2
 import numpy as np

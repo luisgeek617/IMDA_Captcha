@@ -210,6 +210,38 @@ class Captcha(object):
 
         return ''.join(predicted_chars)
 
+    def __call__(self, im_path):
+        """
+        Perform inference on an input image and save the predicted characters.
+
+        Args:
+            im_path (str): Path to the input image (.jpg format).
+            save_path (str): Path to save the output file with the predicted string.
+        """
+        # Load and preprocess the image
+        image = cv2.imread(im_path, cv2.IMREAD_GRAYSCALE)
+        thresh_img = self.preprocess_image(image)
+
+        # Get character boundaries based on projection analysis
+        boundaries = self.get_character_boundaries(thresh_img)
+
+        # Segment the image into 5 characters
+        char_segments = self.segment_characters(thresh_img, boundaries)
+
+        self.visualize_segments(char_segments)
+
+        predicted_chars = []
+        for char_segment in char_segments:
+            pred_char = self.process_and_predict_image(char_segment, self.model, self.characters)
+            # Post-process based on size and aspect ratio
+            if (pred_char == 'O') or (pred_char == '0'):
+                    pred_char = self.fix_zeros_and_os_with_size(char_segment, pred_char)
+            predicted_chars.append(pred_char)
+
+        predicted_string = ''.join(predicted_chars)
+
+        print("Predicted Captcha: ", predicted_string)
+
 # Command-line argument parsing
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Captcha Recognition")
@@ -218,11 +250,6 @@ if __name__ == "__main__":
     parser.add_argument('image_path', type=str, help="Path to the input captcha image.")
     args = parser.parse_args()
 
-    # Load and process image
-    image = cv2.imread(args.image_path)
-
     # Initialize Captcha class and process the image
     captcha_recognizer = Captcha(args.model_json, args.model_weights)
-    captcha_result = captcha_recognizer.process_and_predict_image(image, captcha_recognizer.model, captcha_recognizer.characters)
-
-    print(f"Predicted Captcha: {captcha_result}")
+    captcha_recognizer(image_path)

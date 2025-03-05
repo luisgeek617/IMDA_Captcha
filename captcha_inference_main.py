@@ -233,7 +233,7 @@ class Captcha(object):
 
         return predicted_string
 
-    def __call__(self, im_path):
+    def __call__(self, im_path, save_path):
         """
         Perform inference on an input image and save the predicted characters.
 
@@ -266,8 +266,8 @@ class Captcha(object):
         print("Predicted Captcha: ", predicted_string)
 
         # Save the predicted string to file
-#        with open(save_path, 'w') as f:
-#            f.write(predicted_string)
+        with open(save_path, 'w') as f:
+            f.write(predicted_string)
 
 #        print(f"Predicted Captcha: {predicted_string}")
 
@@ -278,8 +278,9 @@ if __name__ == "__main__":
     parser.add_argument('model_json', type=str, help="Path to the model JSON file.")
     parser.add_argument('model_weights', type=str, help="Path to the model weights file.")
     parser.add_argument('image_path', type=str, help="Path to the input captcha image.")
+    parser.add_argument('save_path', type=str, help="Path to the result.")
     args = parser.parse_args()
 
     # Initialize Captcha class and process the image
     captcha_recognizer = Captcha(args.model_json, args.model_weights)
-    captcha_recognizer(args.image_path)
+    captcha_recognizer(args.image_path, args.save_path)

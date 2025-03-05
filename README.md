@@ -30,20 +30,19 @@ OpenCV
 NumPy
 Matplotlib
 
+you may install the relavent package using the below command
+python3 -m pip install --upgrade pip
+pip install opencv-python
+sudo apt-get update 
+sudo apt-get install libgl1-mesa-glx
+sudo apt-get install -y libgl1 libglib2.0-0
+pip install keras
+pip install tensorflow
 
-# Usage for simplicity, you may directly run captcha.py
 
-# Loading the Model
-
-from captcha import Captcha
-model_json = 'model/captcha_model.json'
-model_weights = 'model/captcha_model.h5'
-captcha_solver = Captcha(model_json, model_weights)
-
-# Processing an Image and Predicting
-image_path = 'input/captcha_image.jpg'
-predicted_text = captcha_solver(image_path)
-print(f"Predicted Captcha: {predicted_text}")
+# Usage for simplicity, you may directly run 
+python captcha_inference_main.py Model/model.json Model/model.h5 input/input02.jpg
+the following arguments are required: model_json, model_weights, image_path
 
 # Key Methods
 

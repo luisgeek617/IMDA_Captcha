@@ -44,7 +44,7 @@ python test_all_cases.py
 the algorithm acheive 100% accuracy
 
 # Usage for simplicity, you may directly run 
-python captcha_inference_main.py Model/model.json Model/model.h5 input/input02.jpg
+python captcha_inference_main.py Model/model.json Model/model.h5 input/input02.jpg result/result02.txt
 the following arguments are required: model_json, model_weights, image_path
 
 # Key Methods and Flows

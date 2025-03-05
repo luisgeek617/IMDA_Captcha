@@ -1,4 +1,4 @@
-#python captcha_inference_main.py Model/model.json Model/model.h5 input/input02.jpg
+#python captcha_inference_main.py Model/model.json Model/model.h5 input/input02.jpg result/result02.txt
 import argparse
 import cv2
 import numpy as np

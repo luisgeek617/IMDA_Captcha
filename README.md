@@ -10,7 +10,7 @@ Assumptions:
 - the captcha generator, creates strictly 5-character captchas, and each of the characters is either an upper-case character (A-Z) or a numeral (0-9).
 
 # Project Structure
-├── captcha.py              # Captcha class and processing methods
+├── captcha_inference_main.py              # Captcha class and processing methods
 ├── Model
 │   ├── model.json      # Model architecture
 │   ├── model.h5        # Trained model weights

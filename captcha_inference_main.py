@@ -283,5 +283,4 @@ if __name__ == "__main__":
 
     # Initialize Captcha class and process the image
     captcha_recognizer = Captcha(args.model_json, args.model_weights)
-    print("new version")
     captcha_recognizer(args.image_path)

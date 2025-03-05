@@ -20,6 +20,9 @@ Assumptions:
 ├── output
 │   ├── output01.txt             # Ground Truth of the corresponding input image, e.g, input01.jpg
 │   ├── output02.txt             # Ground Truth of the corresponding input image, e.g, input02.jpg
+├── result
+│   ├── result01.txt             # Predicted Result of the corresponding input image, e.g, input01.jpg
+│   ├── result02.txt             # Predicted Result of the corresponding input image, e.g, input02.jpg
 
 # Requirements
 
